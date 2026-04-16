@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<h>tml lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sameer Ahamed - Portfolio</title>
+
+<!-- ICON LIBRARY -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a1a1a;
+  background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #0f4c75 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SMOOTH SCROLL */
+html { scroll-behavior: smooth; }
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(15, 15, 30, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(100, 200, 255, 0.3);
+  display: flex;
+  gap: 2rem;
+  padding: 1.2rem 2rem;
+  z-index: 1000;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+nav a {
+  text-decoration: none;
+  color: #e0e0ff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+nav a:hover {
+  color: #64c8ff;
+  text-shadow: 0 0 15px rgba(100, 200, 255, 0.6);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #64c8ff, #00d4ff);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after { width: 100%; }
+
+/* PAGES */
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 3rem;
+  position: relative;
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 50%, rgba(100, 200, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.inner { max-width: 700px; width: 100%; position: relative; z-index: 1; }
+
+h1 { 
+  font-size: 3.5rem; 
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #64c8ff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+h2 { 
+  font-size: 2rem; 
+  margin-bottom: 1.5rem;
+  color: #64c8ff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+p  { 
+  line-height: 1.8; 
+  margin-bottom: 1.2rem;
+  color: #d0d0e0;
+  font-size: 1rem;
+}
+
+/* ICON STYLE */
+.icon {
+  margin-right: 8px;
+  color: #64c8ff;
+  transition: all 0.3s ease;
+}
+
+/* HERO */
+#hero { 
+  text-align: center;
+  background: linear-gradient(135deg, rgba(100, 200, 255, 0.05) 0%, rgba(0, 212, 255, 0.05) 100%);
+}
+
+#hero h1 {
+  font-size: 4rem;
+  animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contact-row {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+
+.contact-row span {
+  padding: 0.8rem 1.5rem;
+  background: rgba(100, 200, 255, 0.15);
+  border: 1px solid rgba(100, 200, 255, 0.3);
+  border-radius: 50px;
+  color: #e0e0ff;
+  transition: all 0.3s ease;
+}
+
+.contact-row span:hover {
+  background: rgba(100, 200, 255, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(100, 200, 255, 0.2);
+}
+
+/* EDUCATION */
+.edu-item {
+  border-left: 3px solid #64c8ff;
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+  background: rgba(100, 200, 255, 0.08);
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.edu-item:hover {
+  background: rgba(100, 200, 255, 0.15);
+  transform: translateX(10px);
+}
+
+.edu-item p {
+  color: #e0e0ff;
+}
+
+/* SKILLS */
+.tag {
+  display: inline-block;
+  border: 2px solid #64c8ff;
+  padding: 0.7rem 1.2rem;
+  margin: 0.5rem;
+  font-size: 0.95rem;
+  border-radius: 30px;
+  background: rgba(100, 200, 255, 0.1);
+  color: #64c8ff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tag:hover {
+  background: rgba(100, 200, 255, 0.3);
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 10px 25px rgba(100, 200, 255, 0.3);
+}
+
+/* LIST */
+.list-item { 
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  background: rgba(100, 200, 255, 0.08);
+  border-radius: 8px;
+  border-left: 3px solid #64c8ff;
+  transition: all 0.3s ease;
+}
+
+.list-item:hover {
+  background: rgba(100, 200, 255, 0.15);
+  transform: translateX(10px);
+}
+
+.list-item p {
+  margin: 0;
+}
+
+/* CERTS */
+.cert-box {
+  border: 2px solid #64c8ff;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+  border-radius: 10px;
+  background: rgba(100, 200, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.cert-box:hover {
+  background: rgba(100, 200, 255, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(100, 200, 255, 0.2);
+}
+
+.cert-box p {
+  margin: 0;
+  color: #e0e0ff;
+}
+
+/* STRENGTHS */
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.card {
+  border: 2px solid rgba(100, 200, 255, 0.4);
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(100, 200, 255, 0.1), rgba(0, 212, 255, 0.1));
+  transition: all 0.3s ease;
+  font-weight: 600;
+  color: #64c8ff;
+  font-size: 1.1rem;
+}
+
+.card:hover {
+  background: linear-gradient(135deg, rgba(100, 200, 255, 0.25), rgba(0, 212, 255, 0.25));
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(100, 200, 255, 0.3);
+  border-color: #64c8ff;
+}
+
+.card i {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover i {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.5rem; }
+  .grid2 { grid-template-columns: 1fr; }
+  nav { gap: 1rem; font-size: 0.85rem; }
+  .contact-row { gap: 0.8rem; }
+  .contact-row span { padding: 0.6rem 1rem; font-size: 0.9rem; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#hero">Home</a>
+  <a href="#objective">About</a>
+  <a href="#education">Education</a>
+  <a href="#skills">Skills</a>
+  <a href="#achievements">Achievements</a>
+  <a href="#certs">Certificates</a>
+  <a href="#strengths">Strengths</a>
+</nav>
+
+<!-- HERO -->
+<section class="page" id="hero">
+  <div class="inner">
+    <h1>Sameer Ahamed</h1>
+    <p>Computer Applications Student · Developer</p>
+    <div class="contact-row">
+      <span><i class="fa fa-phone icon"></i>7397128060</span>
+      <span><i class="fa fa-envelope icon"></i>sameerahamed0411@gmail.com</span>
+      <span><i class="fa fa-location-dot icon"></i>Karamakkudi, Tamil Nadu</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="page" id="objective">
+  <div class="inner">
+    <h2><i class="fa fa-user icon"></i>About Me</h2>
+    <p>I am Sameer Ahamed, a Computer Applications student with a strong interest in software development and technology. I have basic knowledge in Python, HTML, and Node.js, and I am continuously learning to improve my skills.
+
+I am a self-motivated and hardworking individual who is eager to gain real-world experience through internships and projects. I enjoy building simple applications and exploring new technologies to grow as a developer.
+
+My goal is to work in a reputed organization where I can contribute my skills, learn from experienced professionals, and develop my career in the IT field.
+</p>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="page" id="education">
+  <div class="inner">
+    <h2><i class="fa fa-graduation-cap icon"></i>Education</h2>
+    <div class="edu-item">
+      <p><i class="fa fa-school icon"></i>Jamal Mohammed College, Trichy</p>
+      <p>2025-2027 Master of Computer Applications-present </p>
+    </div>
+    <div class="edu-item">
+      <p><i class="fa fa-school icon"></i>Jamal Mohammed College, Trichy</p>
+      <p>2022–2025 Bachelor of Computer Applications-graduated | 64%</p>
+    </div>
+    <div class="edu-item">
+      <p><i class="fa fa-school icon"></i>S.E.T Vidhya Devi Hr Sec School</p>
+      <p>2022 | 50%</p>
+    </div>
+      <div class="edu-item">
+      <p><i class="fa fa-school icon"></i>Guthoos Matric school</p>
+      <p>2020 | 97.6%</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="page" id="skills">
+  <div class="inner">
+    <h2><i class="fa fa-code icon"></i>Skills</h2>
+    <span class="tag"><i class="fa fa-python"></i> Python</span>
+    <span class="tag"><i class="fa fa-html5"></i> HTML</span>
+    <span class="tag"><i class="fa fa-server"></i> Node.js</span>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="page" id="achievements">
+  <div class="inner">
+    <h2><i class="fa fa-trophy icon"></i>Achievements</h2>
+    <div class="list-item">
+      <p><i class="fa fa-star icon"></i>School Rank 3 in 10th</p>
+    </div>
+    <div class="list-item">
+      <p><i class="fa fa-certificate icon"></i>Workshop at NIT</p>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section class="page" id="certs">
+  <div class="inner">
+    <h2><i class="fa fa-award icon"></i>Certifications</h2>
+    <div class="cert-box">
+      <p><i class="fa fa-check icon"></i>Python Machine Learning</p>
+    </div>
+    <div class="cert-box">
+      <p><i class="fa fa-check icon"></i>Node.js Development</p>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section class="page" id="strengths">
+  <div class="inner">
+    <h2><i class="fa fa-bolt icon"></i>Strengths</h2>
+    <div class="grid2">
+      <div class="card"><i class="fa fa-comments icon"></i>Communication</div>
+      <div class="card"><i class="fa fa-clock icon"></i>Time Management</div>
+      <div class="card"><i class="fa fa-rocket icon"></i>Self-Motivated</div>
+      <div class="card"><i class="fa fa-users icon"></i>Team Player</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
